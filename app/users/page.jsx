@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const UsersPage = async () => {
@@ -17,7 +18,9 @@ const UsersPage = async () => {
                 there are title and actions parts
               </p>
               <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
+                <Link href={`/users/${user.id}`}>
+                <button className="btn btn-primary">View Details</button>
+                </Link>
               </div>
             </div>
           </div>
