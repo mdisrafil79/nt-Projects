@@ -1,16 +1,20 @@
+'use client'
 import Link from 'next/link';
-import React from 'react';
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
 
+  const pathname = usePathname();
+  const isActive = (href) => pathname === href || pathname.startsWith(`${href}/`);
+
     const links = <>
-        <li><Link href='/docs'>Docs</Link></li>
-        <li><Link href='/showcase'>Showcase</Link></li>
-        <li><Link href='/blogs'>Blogs</Link></li>
-        <li><Link href='/about'>About</Link></li>
-        <li><Link href='/about/developer'>Developer</Link></li>
-        <li><Link href='/dashboard'>Dashboard</Link></li>
-        <li><Link href='/users'>Users</Link></li>
+        <li><Link className={isActive('/docs') ? 'text-blue-500' : ''} href='/docs'>Docs</Link></li>
+        <li><Link className={isActive('/showcase') ? 'text-blue-500' : ''} href='/showcase'>Showcase</Link></li>
+        <li><Link className={isActive('/blogs') ? 'text-blue-500' : ''} href='/blogs'>Blogs</Link></li>
+        <li><Link className={isActive('/about') ? 'text-blue-500' : ''} href='/about'>About</Link></li>
+        <li><Link className={isActive('/about/developer') ? 'text-blue-500' : ''} href='/about/developer'>Developer</Link></li>
+        <li><Link className={isActive('/dashboard') ? 'text-blue-500' : ''} href='/dashboard'>Dashboard</Link></li>
+        <li><Link className={isActive('/users') ? 'text-blue-500' : ''} href='/users'>Users</Link></li>
     </>
     return (
         <div className="navbar bg-base-100 shadow-sm">
